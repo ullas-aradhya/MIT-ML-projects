@@ -65,8 +65,15 @@ def hinge_loss_full(feature_matrix, labels, theta, theta_0):
         the hinge loss, as a float, associated with the given dataset and
         parameters.  This number should be the average hinge loss across all of
     """
-
-    # Your code here
+    average_loss = float(0)
+    n = np.shape(labels)[0]
+    for i in range (n):
+         feature_vector = feature_matrix[i]
+         label = labels[i]
+         loss = hinge_loss_single(feature_vector, label, theta, theta_0)
+         average_loss += loss
+    return average_loss/n
+ 
     raise NotImplementedError
 
 
@@ -93,7 +100,10 @@ def perceptron_single_step_update(
         the updated feature-coefficient parameter `theta` as a numpy array
         the updated offset parameter `theta_0` as a floating point number
     """
-    # Your code here
+    if label * (np.dot(current_theta, feature_vector) + current_theta_0) <= 0:
+        current_theta = current_theta + label * feature_vector
+        current_theta_0 = current_theta_0 + label
+        return current_theta, current_theta_0
     raise NotImplementedError
 
 
