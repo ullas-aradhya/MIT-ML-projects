@@ -133,7 +133,7 @@ def perceptron(feature_matrix, labels, T):
     nsamples, nfeatures = feature_matrix.shape
     theta = np.zeros(nfeatures)
     theta_0 = 0.0
-    
+
     for t in range(T):
         for i in get_order(nsamples):
             feature_vector = feature_matrix[i]
@@ -171,7 +171,26 @@ def average_perceptron(feature_matrix, labels, T):
         the average offset parameter `theta_0` as a floating point number
             (averaged also over T iterations through the feature matrix).
     """
-    # Your code here
+    
+    nsamples, nfeatures = feature_matrix.shape
+    theta = np.zeros(nfeatures)
+    theta_0 = 0.0
+    theta_sum = np.zeros(nfeatures)
+    theta_0_sum = 0.0
+
+    for t in range(T):
+        for i in get_order(nsamples):
+            feature_vector = feature_matrix[i]
+            label = labels[i]
+            theta, theta_0 = perceptron_single_step_update(feature_vector, label, theta, theta_0)
+            theta_sum += theta
+            theta_0_sum += theta_0
+
+    average_theta_0 = theta_0_sum/(nsamples*T)
+    average_theta = theta_sum/(nsamples*T)
+    
+    return average_theta,average_theta_0
+
     raise NotImplementedError
 
 
