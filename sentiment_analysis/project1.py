@@ -347,8 +347,13 @@ def classifier_accuracy(
         trained classifier on the training data and the second element is the
         accuracy of the trained classifier on the validation data.
     """
-    
-    
+
+    theta, theta_0 = classifier(train_feature_matrix, train_labels, **kwargs)
+    train_predictions = classify(train_feature_matrix, theta, theta_0)
+    val_predictions = classify(val_feature_matrix, theta, theta_0)
+    training_accuracy = np.mean(train_labels == train_predictions)
+    validation_accuracy = np.mean(val_labels == val_predictions)
+    return training_accuracy, validation_accuracy
 
 
 
