@@ -42,7 +42,7 @@ plot_toy_results('Perceptron', thetas_perceptron)
 plot_toy_results('Average Perceptron', thetas_avg_perceptron)
 plot_toy_results('Pegasos', thetas_pegasos)
 
-utils.plot_toy_data('Perceptron', toy_features, toy_labels, thetas_perceptron)
+#utils.plot_toy_data('Perceptron', toy_features, toy_labels, thetas_perceptron)
 
 #-------------------------------------------------------------------------------
 # Problem 7
