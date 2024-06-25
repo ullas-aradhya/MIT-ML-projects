@@ -104,7 +104,7 @@ def perceptron_single_step_update(
         current_theta = current_theta + label * feature_vector
         current_theta_0 = current_theta_0 + label
         return current_theta, current_theta_0
-    raise NotImplementedError
+
 
 
 
@@ -141,7 +141,6 @@ def perceptron(feature_matrix, labels, T):
             theta, theta_0 = perceptron_single_step_update(feature_vector, label, theta, theta_0)
 
     return theta,theta_0
-    raise NotImplementedError
 
 
 
@@ -361,7 +360,6 @@ def extract_words(text):
         count as their own words.
     """
     # Your code here
-    raise NotImplementedError
 
     for c in punctuation + digits:
         text = text.replace(c, ' ' + c + ' ')
@@ -381,14 +379,13 @@ def bag_of_words(texts, remove_stopword=False):
         integer `index`.
     """
     # Your code here
-    raise NotImplementedError
     
     indices_by_word = {}  # maps word to unique index
     for text in texts:
         word_list = extract_words(text)
         for word in word_list:
             if word in indices_by_word: continue
-            if word in stopword: continue
+            #if word in stopword: continue
             indices_by_word[word] = len(indices_by_word)
 
     return indices_by_word
@@ -412,9 +409,10 @@ def extract_bow_feature_vectors(reviews, indices_by_word, binarize=True):
         for word in word_list:
             if word not in indices_by_word: continue
             feature_matrix[i, indices_by_word[word]] += 1
-    if binarize:
-        # Your code here
-        raise NotImplementedError
+    # if binarize:
+    #     # Your code here
+    #     raise NotImplementedError
+    #implement later - Ullas
     return feature_matrix
 
 
