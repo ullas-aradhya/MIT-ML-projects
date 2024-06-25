@@ -100,7 +100,6 @@ def perceptron_single_step_update(
         the updated feature-coefficient parameter `theta` as a numpy array
         the updated offset parameter `theta_0` as a floating point number
     """
-    print(f"Inputs: {feature_vector}, {label}, {current_theta}, {current_theta_0}")
     if label * (np.dot(current_theta, feature_vector) + current_theta_0) <= 0:
         current_theta = current_theta + label * feature_vector
         current_theta_0 = current_theta_0 + label
@@ -140,7 +139,6 @@ def perceptron(feature_matrix, labels, T):
         for i in get_order(nsamples):
             feature_vector = feature_matrix[i]
             label = labels[i]
-            print(f"Iteration {t}-{i}, feature_vector: {feature_vector}, label: {label}, theta: {theta}, theta_0: {theta_0}")
             theta, theta_0 = perceptron_single_step_update(feature_vector, label, theta, theta_0)
 
     return theta,theta_0
@@ -275,7 +273,6 @@ def pegasos(feature_matrix, labels, T, L):
             theta, theta_0 = pegasos_single_step_update(feature_vector, label, L, eta, theta, theta_0)
 
     return theta,theta_0
-    raise NotImplementedError
 
 
 
