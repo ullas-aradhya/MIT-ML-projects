@@ -388,11 +388,14 @@ def bag_of_words(texts, remove_stopword=False):
     # Your code here
     
     indices_by_word = {}  # maps word to unique index
+    stopwords = []
+    with open('stopwords.txt') as f:
+        stopwords = f.read().split()
     for text in texts:
         word_list = extract_words(text)
         for word in word_list:
             if word in indices_by_word: continue
-            #if word in stopword: continue
+            if word in stopwords: continue
             indices_by_word[word] = len(indices_by_word)
 
     return indices_by_word
