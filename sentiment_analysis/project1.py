@@ -409,17 +409,17 @@ def extract_bow_feature_vectors(reviews, indices_by_word, binarize=True):
         matrix thus has shape (n, m), where n counts reviews and m counts words
         in the dictionary.
     """
-    # Your code here
+    
     feature_matrix = np.zeros([len(reviews), len(indices_by_word)], dtype=np.float64)
     for i, text in enumerate(reviews):
         word_list = extract_words(text)
         for word in word_list:
             if word not in indices_by_word: continue
             feature_matrix[i, indices_by_word[word]] += 1
-    # if binarize:
-    #     # Your code here
-    #     raise NotImplementedError
-    #implement later - Ullas
+
+    if binarize:
+        feature_matrix[feature_matrix > 0] = 1
+
     return feature_matrix
 
 
