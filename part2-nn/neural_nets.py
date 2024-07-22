@@ -19,7 +19,10 @@ def rectified_linear_unit(x):
 
 def rectified_linear_unit_derivative(x):
     """ Returns the derivative of ReLU."""
-    # TODO
+    if x > 0:
+        return 1
+    elif x < 0:
+        return 0
 
 def output_layer_activation(x):
     """ Linear function, returns input as is. """
