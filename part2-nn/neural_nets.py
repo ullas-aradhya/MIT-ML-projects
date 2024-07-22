@@ -15,7 +15,7 @@ import math
 
 def rectified_linear_unit(x):
     """ Returns the ReLU of x, or the maximum between 0 and x."""
-    # TODO
+    return max(0, x)
 
 def rectified_linear_unit_derivative(x):
     """ Returns the derivative of ReLU."""
@@ -29,6 +29,7 @@ def output_layer_activation_derivative(x):
     """ Returns the derivative of a linear function: 1. """
     return 1
 
+'''
 class NeuralNetwork():
     """
         Contains the following functions:
@@ -112,3 +113,4 @@ x.train_neural_network()
 
 # UNCOMMENT THE LINE BELOW TO TEST YOUR NEURAL NETWORK
 # x.test_neural_network()
+'''
