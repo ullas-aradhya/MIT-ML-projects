@@ -170,7 +170,6 @@ def compute_test_error_mod3(X, Y, theta, temp_parameter):
     """
     predicted_labels = get_classification(X, theta, temp_parameter)
     predicted_labels_mod3 = predicted_labels % 3
-
     return 1 - np.mean(predicted_labels_mod3 == Y)
 
     raise NotImplementedError

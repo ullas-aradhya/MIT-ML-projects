@@ -26,123 +26,123 @@ print (train_y[0:20])
 # TODO: first fill out functions in linear_regression.py, otherwise the functions below will not work
 
 
-# def run_linear_regression_on_MNIST(lambda_factor=0.01):
-#     """
-#     Trains linear regression, classifies test data, computes test error on test set
+def run_linear_regression_on_MNIST(lambda_factor=0.01):
+    """
+    Trains linear regression, classifies test data, computes test error on test set
 
-#     Returns:
-#         Final test error
-#     """
-#     train_x, train_y, test_x, test_y = get_MNIST_data()
-#     train_x_bias = np.hstack([np.ones([train_x.shape[0], 1]), train_x])
-#     test_x_bias = np.hstack([np.ones([test_x.shape[0], 1]), test_x])
-#     theta = closed_form(train_x_bias, train_y, lambda_factor)
-#     test_error = compute_test_error_linear(test_x_bias, test_y, theta)
-#     return test_error
-
-
-# # Don't run this until the relevant functions in linear_regression.py have been fully implemented.
-# print('Linear Regression test_error =', run_linear_regression_on_MNIST(lambda_factor=1))
+    Returns:
+        Final test error
+    """
+    train_x, train_y, test_x, test_y = get_MNIST_data()
+    train_x_bias = np.hstack([np.ones([train_x.shape[0], 1]), train_x])
+    test_x_bias = np.hstack([np.ones([test_x.shape[0], 1]), test_x])
+    theta = closed_form(train_x_bias, train_y, lambda_factor)
+    test_error = compute_test_error_linear(test_x_bias, test_y, theta)
+    return test_error
 
 
-# #######################################################################
-# # 3. Support Vector Machine
-# #######################################################################
-
-# # TODO: first fill out functions in svm.py, or the functions below will not work
-
-# def run_svm_one_vs_rest_on_MNIST():
-#     """
-#     Trains svm, classifies test data, computes test error on test set
-
-#     Returns:
-#         Test error for the binary svm
-#     """
-#     train_x, train_y, test_x, test_y = get_MNIST_data()
-#     train_y[train_y != 0] = 1
-#     test_y[test_y != 0] = 1
-#     pred_test_y = one_vs_rest_svm(train_x, train_y, test_x)
-#     test_error = compute_test_error_svm(test_y, pred_test_y)
-#     return test_error
+# Don't run this until the relevant functions in linear_regression.py have been fully implemented.
+print('Linear Regression test_error =', run_linear_regression_on_MNIST(lambda_factor=1))
 
 
-# print('SVM one vs. rest test_error:', run_svm_one_vs_rest_on_MNIST())
+#######################################################################
+# 3. Support Vector Machine
+#######################################################################
+
+# TODO: first fill out functions in svm.py, or the functions below will not work
+
+def run_svm_one_vs_rest_on_MNIST():
+    """
+    Trains svm, classifies test data, computes test error on test set
+
+    Returns:
+        Test error for the binary svm
+    """
+    train_x, train_y, test_x, test_y = get_MNIST_data()
+    train_y[train_y != 0] = 1
+    test_y[test_y != 0] = 1
+    pred_test_y = one_vs_rest_svm(train_x, train_y, test_x)
+    test_error = compute_test_error_svm(test_y, pred_test_y)
+    return test_error
 
 
-# def run_multiclass_svm_on_MNIST():
-#     """
-#     Trains svm, classifies test data, computes test error on test set
-
-#     Returns:
-#         Test error for the binary svm
-#     """
-#     train_x, train_y, test_x, test_y = get_MNIST_data()
-#     pred_test_y = multi_class_svm(train_x, train_y, test_x)
-#     test_error = compute_test_error_svm(test_y, pred_test_y)
-#     return test_error
+print('SVM one vs. rest test_error:', run_svm_one_vs_rest_on_MNIST())
 
 
-# print('Multiclass SVM test_error:', run_multiclass_svm_on_MNIST())
+def run_multiclass_svm_on_MNIST():
+    """
+    Trains svm, classifies test data, computes test error on test set
 
-# #######################################################################
-# # 4. Multinomial (Softmax) Regression and Gradient Descent
-# #######################################################################
+    Returns:
+        Test error for the binary svm
+    """
+    train_x, train_y, test_x, test_y = get_MNIST_data()
+    pred_test_y = multi_class_svm(train_x, train_y, test_x)
+    test_error = compute_test_error_svm(test_y, pred_test_y)
+    return test_error
 
-# # TODO: first fill out functions in softmax.py, or run_softmax_on_MNIST will not work
+
+print('Multiclass SVM test_error:', run_multiclass_svm_on_MNIST())
+
+#######################################################################
+# 4. Multinomial (Softmax) Regression and Gradient Descent
+#######################################################################
+
+# TODO: first fill out functions in softmax.py, or run_softmax_on_MNIST will not work
 
 
-# def run_softmax_on_MNIST(temp_parameter=1):
-#     """
-#     Trains softmax, classifies test data, computes test error, and plots cost function
+def run_softmax_on_MNIST(temp_parameter=1):
+    """
+    Trains softmax, classifies test data, computes test error, and plots cost function
 
-#     Runs softmax_regression on the MNIST training set and computes the test error using
-#     the test set. It uses the following values for parameters:
-#     alpha = 0.3
-#     lambda = 1e-4
-#     num_iterations = 150
+    Runs softmax_regression on the MNIST training set and computes the test error using
+    the test set. It uses the following values for parameters:
+    alpha = 0.3
+    lambda = 1e-4
+    num_iterations = 150
 
-#     Saves the final theta to ./theta.pkl.gz
+    Saves the final theta to ./theta.pkl.gz
 
-#     Returns:
-#         Final test error
-#     """
-#     train_x, train_y, test_x, test_y = get_MNIST_data()
-#     theta, cost_function_history = softmax_regression(train_x, train_y, temp_parameter, alpha=0.3, lambda_factor=1.0e-4, k=10, num_iterations=150)
-#     plot_cost_function_over_time(cost_function_history)
-#     test_error = compute_test_error(test_x, test_y, theta, temp_parameter)
-#     # Save the model parameters theta obtained from calling softmax_regression to disk.
-#     write_pickle_data(theta, "./theta.pkl.gz")
+    Returns:
+        Final test error
+    """
+    train_x, train_y, test_x, test_y = get_MNIST_data()
+    theta, cost_function_history = softmax_regression(train_x, train_y, temp_parameter, alpha=0.3, lambda_factor=1.0e-4, k=10, num_iterations=150)
+    plot_cost_function_over_time(cost_function_history)
+    test_error = compute_test_error(test_x, test_y, theta, temp_parameter)
+    # Save the model parameters theta obtained from calling softmax_regression to disk.
+    write_pickle_data(theta, "./theta.pkl.gz")
 
-#     # TODO: add your code here for the "Using the Current Model" question in tab 6.
+    # TODO: add your code here for the "Using the Current Model" question in tab 6.
  
 
 
-# print('softmax test_error=', run_softmax_on_MNIST(temp_parameter=1))
+print('softmax test_error=', run_softmax_on_MNIST(temp_parameter=1))
 
-# # TODO: Find the error rate for temp_parameter = [.5, 1.0, 2.0]
-# #      Remember to return the tempParameter to 1, and re-run run_softmax_on_MNIST
+# TODO: Find the error rate for temp_parameter = [.5, 1.0, 2.0]
+#      Remember to return the tempParameter to 1, and re-run run_softmax_on_MNIST
 
-# #######################################################################
-# # 6. Changing Labels
-# #######################################################################
+#######################################################################
+# 6. Changing Labels
+#######################################################################
 
 
 
-# def run_softmax_on_MNIST_mod3(temp_parameter=1):
-#     """
-#     Trains Softmax regression on digit (mod 3) classifications.
+def run_softmax_on_MNIST_mod3(temp_parameter=1):
+    """
+    Trains Softmax regression on digit (mod 3) classifications.
 
-#     See run_softmax_on_MNIST for more info.
-#     """
-#     train_y_mod3, test_y_mod3 = update_y(train_y, test_y)
-#     theta_mod3, cost_function_history_3 = softmax_regression(train_x, train_y_mod3, temp_parameter, alpha=0.3, lambda_factor=1.0e-4, k=10, num_iterations=150)
-#     test_error_mod3 = compute_test_error_mod3(test_x, test_y_mod3, theta_mod3, temp_parameter)
-#     print("softmax test_error_mod3=", test_error_mod3) 
+    See run_softmax_on_MNIST for more info.
+    """
+    train_y_mod3, test_y_mod3 = update_y(train_y, test_y)
+    theta_mod3, cost_function_history_3 = softmax_regression(train_x, train_y_mod3, temp_parameter, alpha=0.3, lambda_factor=1.0e-4, k=10, num_iterations=150)
+    test_error_mod3 = compute_test_error_mod3(test_x, test_y_mod3, theta_mod3, temp_parameter)
+    print("softmax test_error_mod3=", test_error_mod3) 
     
-#     raise NotImplementedError
+    raise NotImplementedError
 
 
-# # TODO: Run run_softmax_on_MNIST_mod3(), report the error rate
+# TODO: Run run_softmax_on_MNIST_mod3(), report the error rate
 
 
 #######################################################################
@@ -196,35 +196,23 @@ plot_images(train_x[1, ])
 
 
 # TODO: First fill out cubicFeatures() function in features.py as the below code requires it.
+
+'''
 n_components_cube = 10
 
 train_x_centered, feature_means = center_data(train_x)
 pcs = principal_components(train_x_centered)
 train_pca10 = project_onto_PC(train_x, pcs, n_components_cube, feature_means)
-test_pca10 = project_onto_PC(test_x, pcs, n_components_cube, feature_means)
-
-# Check shapes
-assert train_pca10.shape == (60000, 10)
-assert test_pca10.shape == (10000, 10)
-
-# Compute cubic features
+test_pca10= project_onto_PC(test_x, pcs, n_components_cube, feature_means)
 train_cube = cubic_features(train_pca10)
 test_cube = cubic_features(test_pca10)
-
-# Check shapes
-assert train_cube.shape == (60000, 135)
-assert test_cube.shape == (10000, 135)
-
-# Train softmax regression
 theta_cubic, cost_function_history_cubic = softmax_regression(train_cube, train_y, temp_parameter=1, alpha=0.3, lambda_factor=1.0e-4, k=10, num_iterations=150)
-
-# Compute test error
 test_error_cubic = compute_test_error(test_cube, test_y, theta_cubic, temp_parameter=1)
 print("softmax test_error_cubic=", test_error_cubic)
 
 # train_cube (and test_cube) is a representation of our training (and test) data
 # after applying the cubic kernel feature mapping to the 10-dimensional PCA representations.
-
+'''
 
 # TODO: Train your softmax regression model using (train_cube, train_y)
 #       and evaluate its accuracy on (test_cube, test_y).
