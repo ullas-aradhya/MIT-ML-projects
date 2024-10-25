@@ -26,7 +26,7 @@ To begin, simply run the main script:
 python main.py
 ```
 
-This file provides code that reads the MNIST data (from `mnist.pkl.gz`) via the `get_MNIST_data` function in `utils.py`. It returns data in the form of Numpy arrays:
+This file provides code that reads the MNIST data via the `get_MNIST_data` function in `utils.py`. It returns data in the form of Numpy arrays:
 
 - `train_x`: Training data matrix, where each row represents a flattened 28 × 28-pixel image.
 - `train_y`: Labels for each training image (digit between 0-9).
