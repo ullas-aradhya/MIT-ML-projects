@@ -58,13 +58,6 @@ The project consists of the following Python files:
 
 Feel free to add additional test cases in `test.py` to further validate your implementation locally.
 
-## Feature Engineering and Exploration
-
-In addition to the basic text features, experiment with adding and modifying features to see how they affect classifier performance. Possible approaches include:
-
-- Using word counts or TF-IDF (Term Frequency-Inverse Document Frequency).
-- Exploring n-grams (bigrams or trigrams) to capture word context.
-- Applying feature scaling or normalization.
 
 ## License
 
