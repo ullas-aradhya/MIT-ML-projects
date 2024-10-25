@@ -2,7 +2,7 @@
 
 ## Overview
 
-The goal of this project is to design a classifier for sentiment analysis of product reviews. The dataset used consists of product reviews written by Amazon customers, specifically focusing on food products. Each review has been labeled as either positive (`+1`) or negative (`-1`), based on an adjusted 5-point scale.
+This project is completed as part of the course MITx 6.86x: Machine Learning with Python - From Linear Models to Deep Learning and the goal of this project is to design a classifier for sentiment analysis of product reviews. The dataset used consists of product reviews written by Amazon customers, specifically focusing on food products. Each review has been labeled as either positive (`+1`) or negative (`-1`), based on an adjusted 5-point scale.
 
 The project explores the implementation and comparison of three types of linear classifiers:
 
