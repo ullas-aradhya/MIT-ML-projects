@@ -1,4 +1,4 @@
-# Sentiment Analysis Classifier Project
+# Automatic Review Analyzer
 
 ## Overview
 
